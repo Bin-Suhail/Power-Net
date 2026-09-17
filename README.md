@@ -1,9 +1,9 @@
-# Power ⚡
+# POWER NET ⚡
 
 > **An advanced Flutter application for managing and tracking MikroTik networks, monitoring modem status, and drawing network topology on an interactive map.**
 
 ## 📌 About The Project
-**Power** is a professional networking tool designed for network administrators and service providers. The app enables automatic local discovery of connected network devices, plots their geographical locations on a map, and monitors link statuses between towers and equipment in real-time. With a modern and intuitive interface, it simplifies infrastructure management and ensures rapid fault detection.
+**POWER NET** is a professional networking tool designed for network administrators and service providers. The app enables automatic local discovery of connected network devices, plots their geographical locations on a map, and monitors link statuses between towers and equipment in real-time. With a modern and intuitive interface, it simplifies infrastructure management and ensures rapid fault detection.
 
 ## 🚀 Key Features
 * **🗺️ Interactive Network Topology Map:** Draw links between towers and equipment directly on the map. Links change color dynamically (green for online, red for offline) based on endpoint connection statuses.
