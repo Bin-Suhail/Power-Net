@@ -1,46 +1,148 @@
 # POWER NET ⚡
 
-> **An advanced Flutter application for managing and tracking MikroTik networks, monitoring modem status, and drawing network topology on an interactive map.**
+> **تطبيق Flutter متقدم لإدارة شبكات MikroTik اللاسلكية ومراقبة حالة الأجهزة ورسم طوبولوجيا الشبكة على خريطة تفاعلية.**
 
-## 📌 About The Project
-**POWER NET** is a professional networking tool designed for network administrators and service providers. The app enables automatic local discovery of connected network devices, plots their geographical locations on a map, and monitors link statuses between towers and equipment in real-time. With a modern and intuitive interface, it simplifies infrastructure management and ensures rapid fault detection.
+[![Flutter](https://img.shields.io/badge/Flutter-3.13+-02569B?logo=flutter)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3.13+-0175C2?logo=dart)](https://dart.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-🔥-FFCA28?logo=firebase)](https://firebase.google.com)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-## 🚀 Key Features
-* **🗺️ Interactive Network Topology Map:** Draw links between towers and equipment directly on the map. Links change color dynamically (green for online, red for offline) based on endpoint connection statuses.
-* **📡 Auto-Discovery:** Automatically capture new, unplaced devices via the MNDP (MikroTik Neighbor Discovery Protocol) and display them in a floating window.
-* **📍 Drag & Drop:** A smart feature that allows you to drag any unplaced device from the list and drop it onto a specific point on the map to instantly register its geographical coordinates.
-* **⚡ Real-time Monitoring & Filtering:** Quick filters to view Online, Offline, or Maintenance devices, paired with a periodic 10-second cleanup timer to continuously evaluate device connection states.
-* **📱 Modern UI:** Built with `Material 3` design principles, featuring bottom sheets that display precise details for towers and equipment (Address, IP, Coordinates, Connected Devices).
+---
 
-## 🛠️ Tech Stack
+## 📌 نبذة عن المشروع
 
-**Frontend & State Management:**
-* **Framework:** Flutter (Dart SDK ^3.13.2)
-* **State Management:** Riverpod (`flutter_riverpod`)
-* **Routing:** `go_router`
-* **Storage & Security:** `shared_preferences` & `flutter_secure_storage`
-* **Localization:** `flutter_localizations` & `intl`
+**POWER NET** أداة شبكات احترافية صُممت لمدراء الشبكات ومزوّدي خدمات الإنترنت (WISP). يمكّنك التطبيق من:
 
-**Backend & Database:**
-* **Firebase Core & Cloud Firestore:** For storing network tower/equipment data and link statuses.
-* **Firebase Auth:** For user authentication and access management.
+- اكتشاف أجهزة الشبكة المتصلة تلقائيًا عبر بروتوكول **MNDP** (MikroTik Neighbor Discovery Protocol)
+- رسم مواقع الأبراج والمعدات جغرافيًا على خريطة تفاعلية
+- مراقبة حالة الروابط بين الأبراج والمعدات في الزمن الحقيقي
+- اكتشاف الأعطال بسرعة عبر تنبيهات بصرية فورية
 
-**Maps & Location:**
-* **Map Engine:** `flutter_map` with support for switching between standard mode (OpenStreetMap) and satellite mode (ArcGIS World Imagery).
-* **Coordinate Processing:** `latlong2`
+---
 
-**Networking & MikroTik Protocols:**
-* **MNDP Service:** A custom service listening to the MikroTik Neighbor Discovery Protocol via `UDP port 5678` to fetch local devices.
-* **MikroTik API:** Direct connection with RouterOS via `MikrotikApiService` to control devices and fetch neighbor data.
+## 🚀 الميزات الرئيسية
 
-## ⚙️ Getting Started
+| الميزة | الوصف |
+|---|---|
+| 🗺️ **خريطة طوبولوجيا تفاعلية** | رسم الروابط بين الأبراج والمعدات على الخريطة، يتغير لون الرابط تلقائيًا (أخضر = متصل، أحمر = مقطوع) |
+| 📡 **اكتشاف تلقائي** | رصد الأجهزة الجديدة غير الموزعة عبر بروتوكول MNDP وعرضها في نافذة عائمة |
+| 📍 **سحب وإفلات** | إمكانية سحب أي جهاز غير موضوع وإفلاته على نقطة محددة في الخريطة لتسجيل إحداثياته الجغرافية فورًا |
+| ⚡ **مراقبة مباشرة** | فلاتر سريعة (متصل، غير متصل، صيانة) مع مؤقّت تنظيف دوري كل 10 ثواني لتقييم حالة الأجهزة |
+| 📱 **واجهة Material 3** | تصميم عصري مع بطاقات تفصيلية لكل جهاز (العنوان، IP، الإحداثيات، الأجهزة المتصلة) |
 
-To run the project on your local environment, follow these steps:
+---
 
-**1. Clone the repository:**
-Clone the repo to your local machine and navigate into the project directory.
+## 🛠️ التقنيات المستخدمة
 
-**2. Install dependencies:**
+### الواجهة الأمامية وإدارة الحالة
+- **Framework:** Flutter (Dart SDK ^3.13.2)
+- **State Management:** Riverpod (`flutter_riverpod`)
+- **Routing:** `go_router`
+- **تخزين وأمان:** `shared_preferences` + `flutter_secure_storage`
+- **ترجمة:** `flutter_localizations` + `intl`
+
+### الخلفية وقاعدة البيانات
+- **Firebase Core + Cloud Firestore:** تخزين بيانات الأبراج والمعدات وحالات الروابط
+- **Firebase Auth:** مصادقة المستخدمين وإدارة الصلاحيات
+
+### الخرائط والمواقع
+- **محرك الخرائط:** `flutter_map` مع دعم التبديل بين OpenStreetMap وArcGIS World Imagery (القمر الصناعي)
+- **معالجة الإحداثيات:** `latlong2`
+
+### الشبكات وبروتوكولات MikroTik
+- **خدمة MNDP:** خدمة مخصصة لاستقبال بروتوكول اكتشاف الجوار من MikroTik عبر `UDP port 5678`
+- **MikroTik API:** اتصال مباشر بـ RouterOS عبر `MikrotikApiService` للتحكم بالأجهزة وجلب بيانات الجوار
+
+---
+
+## 📁 هيكل المشروع
+
+```
+Power-Net/
+├── lib/
+│   ├── main.dart                    # نقطة الدخول
+│   ├── app.dart                     # إعدادات التطبيق والثيمات
+│   ├── models/                      # نماذج البيانات (Tower, Device, Link)
+│   ├── providers/                   # مزودات Riverpod (حالة الشبكة، الخريطة، المصادقة)
+│   ├── screens/                     # شاشات التطبيق
+│   │   ├── map_screen.dart          # شاشة الخريطة الرئيسية
+│   │   ├── device_details_screen.dart # تفاصيل الجهاز
+│   │   └── auth_screen.dart         # تسجيل الدخول
+│   ├── services/                    # خدمات (MikroTik API، MNDP، Firebase)
+│   │   ├── mikrotik_api_service.dart
+│   │   ├── mndp_service.dart
+│   │   └── firebase_service.dart
+│   └── widgets/                     # ويدجتات قابلة لإعادة الاستخدام
+├── assets/                          # الصور والأيقونات
+├── pubspec.yaml                     # تبعيات Flutter
+└── README.md
+```
+
+---
+
+## ⚙️ التثبيت والإعداد
+
+### المتطلبات الأساسية
+- **Flutter SDK** 3.13+
+- **Firebase Project** مهيأ
+- **راوتر MikroTik** في الشبكة (يدعم RouterOS API)
+
+### 1. استنساخ المستودع
+```bash
+git clone https://github.com/Bin-Suhail/Power-Net.git
+cd Power-Net
+```
+
+### 2. تثبيت التبعيات
 ```bash
 flutter clean
 flutter pub get
+```
+
+### 3. إعداد Firebase
+
+#### أ. تثبيت Firebase CLI
+```bash
+npm install -g firebase-tools
+```
+
+#### ب. تسجيل الدخول وربط المشروع
+```bash
+firebase login
+dart pub global activate flutterfire_cli
+flutterfire configure --project=YOUR_PROJECT_ID
+```
+
+> هذا الأمر يولّد ملف `lib/firebase_options.dart` تلقائيًا.
+
+#### ج. تفعيل الخدمات المطلوبة في Firebase Console:
+- **Authentication:** تفعيل المصادقة (بريد/هاتف)
+- **Cloud Firestore:** إنشاء قاعدة بيانات
+
+### 4. تشغيل التطبيق
+```bash
+flutter run
+flutter run -d android
+flutter build apk --release
+```
+
+---
+
+## 🔌 الاتصال براوتر MikroTik
+
+1. فعّل API في الراوتر: `/ip service enable api`
+2. أنشئ مستخدم API: `/user add name=api_user group=full password=YourPassword`
+
+يستمع التطبيق على **UDP port 5678** لالتقاط حزم MNDP تلقائيًا.
+
+---
+
+## 📄 الترخيص
+
+MIT License
+
+---
+
+## 👤 المطور
+
+**بن سهيل** — [GitHub](https://github.com/Bin-Suhail)
